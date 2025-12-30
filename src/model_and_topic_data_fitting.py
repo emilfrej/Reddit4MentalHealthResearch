@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 from glob import glob
 from pathlib import Path
-from turftopic.vectorizers.spacy import LemmaCountVectorizer
 from turftopic.vectorizers.snowball import StemmingCountVectorizer
 
 from turftopic import (SemanticSignalSeparation, ClusteringTopicModel, KeyNMF, SensTopic)

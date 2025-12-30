@@ -40,7 +40,10 @@ This should make you ready to use the scripts.
 ## Running the Pipeline
 
 ### Full pipeline
-If you want to run the full pipeline, you will need at least one subreddit in `.zst` from the pushshift archive. Place Reddit `.zst` files in `reddit_data/`, then change the topic number in `model_and_topic_data_fitting.py` to desired number. Recreating similiar results to the paper would require downloading the entire corpus and running S3 model with n_topics = 300. This would take a bunch of time to setup and waiting for runs to finish even with GPU access and high-performance computers. To play around with the code,  I suggest downloading an single subreddits from the [pushshift dump](https://the-eye.eu/redarcs/) or using the CLI tool aria2 and (academic torrents)[https://academictorrents.com/] if you wish to download many.
+To play around with the code,  I suggest downloading an single subreddit "submissions" file from the [pushshift dump](https://the-eye.eu/redarcs/). For example, (r/pyschosis)[https://the-eye.eu/redarcs/files/Psychosis_submissions.zst]
+This will break the logistic regression since there no positive targets given that posts in r/SuicideWatch are not included, and no positive targets can therefore be found. To work around this you could, also download r/SuicideSubmissions.
+
+If you want to run the full pipeline and recreate the results, you will need at least one subreddit in `.zst` from the pushshift archive. Place Reddit `.zst` files in `reddit_data/`, then change the topic number in `model_and_topic_data_fitting.py` to desired number. Recreating similiar results to the paper would require downloading the entire corpus and running S3 model with n_topics = 300. This would take a bunch of time to setup and waiting for runs to finish even with GPU access and high-performance computers. To this end I suggest getting a torrent (academic torrents)[https://academictorrents.com/] and use the CLI tool aria2.
 
 ```bash
 bash run_pipeline.sh
