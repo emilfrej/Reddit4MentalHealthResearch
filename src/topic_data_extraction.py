@@ -1,25 +1,24 @@
 from turftopic.data import TopicData
-import joblib
-import copy
-from turftopic import load_model
 import pandas as pd
 from glob import glob
-from turftopic.analyzers import LLMAnalyzer
 
-#Def a function to read in S3 topicdata and remove corpus, make llm topic names and save version wiht and wihtout llm names
+#Read in S3 topicdata, remove corpus, and save lightweight version
 def main():
+    # Find topic data file
+    td_files = glob('fitted_models/*_topic_data.joblib')
+    if not td_files:
+        raise FileNotFoundError("No topic_data.joblib found in fitted_models/")
 
-    #read in corpus
-    corpus_file = glob('*corpus*.csv')
-    corpus = pd.read_csv(corpus_file[0])["selftext"]
+    td_path = td_files[0]
+    print(f"Reading topic data from {td_path}")
+    topic_data = TopicData.from_disk(td_path)
 
-    print("Reading in TD")
-    topic_data = TopicData.from_disk("fitted_models/SemanticSignalSeparation_100_topic_data.joblib")
-    print("done reading in TD. running llm analyser")
-
-    #remove the corpus and save
+    # Remove corpus to reduce file size
     topic_data.corpus = None
-    topic_data.to_disk("fitted_models/S3_llm_topics_no_corpus.joblib")
+
+    out_path = "fitted_models/topic_data_no_corpus.joblib"
+    topic_data.to_disk(out_path)
+    print(f"Saved to {out_path}")
 
     
     

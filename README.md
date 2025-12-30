@@ -83,7 +83,7 @@ python src/log_reg.py
 ```
 
 ### Generate figures
-To generate the figures for the paper do. Obv this will require the full data set. This can then be used to knit report.rmd
+To generate the figures for the paper run the following. This will require the full data set. This can then be used to knit report.rmd
 ```bash
 cd paper/
 Rscript make_figures_for_paper.R
@@ -91,6 +91,5 @@ Rscript make_figures_for_paper.R
 This populates
 - `paper/figures/` - All figures for the paper
 
-## Note on Benchmarking Code
 
 
