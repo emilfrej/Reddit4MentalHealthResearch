@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.ipynb
+
+# Data files
+*.csv
+*.json
+*.parquet
+*.zst
+*.pkl
+*.pickle
+*.joblib
+*.npy
+*.npz
+
+# Generated outputs
+*.zip
+*.html
+*.pdf
+*.png
+*.kv
+
+# Folders with generated content
+reddit_data/
+embeddings/
+evaluations/
+fitted_models/
+topic_data_compressed/
+report_files/
+
+# Keep paper/figures (generated figures we want to track)
+!paper/figures/
+!paper/figures/*.png
+!paper/figures/*.pdf
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+crash_log*.txt
+
+# Output
+*.out
+a.out
+
+# Sync conflicts
+*.sync-conflict-*
+
+# R generated
+Rplots.pdf
