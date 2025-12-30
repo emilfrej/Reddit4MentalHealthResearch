@@ -1,4 +1,4 @@
-from src.model_and_topic_data_fitting import (get_corpus, fit_topic_models)
+from model_and_topic_data_fitting import (get_corpus, fit_topic_models)
 
 # main function to test different corpsizes
 def main():

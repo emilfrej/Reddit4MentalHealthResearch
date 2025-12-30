@@ -14,7 +14,7 @@ mkdir -p topic_csvs
 
 # Create virtual environment if it doesn't exist
 if [ ! -d ".venv" ]; then
-    echo "c reating virtual environment"
+    echo "Creating virtual environment"
     python3 -m venv .venv
 fi
 

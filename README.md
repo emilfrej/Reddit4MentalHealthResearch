@@ -1,6 +1,6 @@
 # Topic Modeling Mental Health Reddit Posts
 
-Topic modeling of ~1.9 million mental health-related Reddit posts using Semantic Signal Separation (S3).
+Topic modeling of ~2 million mental health-related Reddit posts using Semantic Signal Separation (S3). See https://www.dropbox.com/scl/fo/7pkofmtii9oflsi21dv0b/AHOwC3Q2lyBe2_hhvFqhhYI?rlkey=51u8ni3cxtowrp1v3chh7jh07&e=1&st=jrt3je13&dl=0
 
 ## Project Structure
 
@@ -18,20 +18,20 @@ Topic modeling of ~1.9 million mental health-related Reddit posts using Semantic
 │   ├── extract_topic_csvs.py    # Export topic data to compressed format
 │   └── log_reg.py               # Logistic regression case study
 │
-├── paper/                       
+├── paper/                       # also a bunch of stuff for making plots.
 │   ├── report_pdf.Rmd           # Main report
-│   ├── make_figures_for_paper.R # Generate all figures
+│   ├── make_figures_for_paper.R # redo plots for the paper in ggplot for aesthetics
 │   
 │
 ├── reddit_data/                 # Place .zst files here
 ├── fitted_models/               # Saved models
 ├── evaluations/                 # Model evaluation results
-└── figures/                     # Generated figures
+└── figures/                     # Generated figures from python files.
 ```
 
-## Installation (UCloud)
+## Installation 
 
-1. Clone project to UCloud
+1. Clone project. Potentially to UCloud if you have access.
 
 2. Run the setup script:
 ```
@@ -49,7 +49,7 @@ source .venv/bin/activate
 Place Reddit `.zst` dump files in `reddit_data/`, then change the topic number in `model_and_topic_data_fitting.py`.
 
 ```bash
-./run_pipeline.sh
+bash run_pipeline.sh
 ```
 
 This will:
@@ -61,7 +61,9 @@ This will:
 To test the reproducibility of this project, I suggest running pipeline --sample on subset of the data on subsample of the data. I suggest r/psychosis, since this is the smallest of the used subreddits. 
 
 ### Individual scripts
-The above pipeline doesn't emperical fit time testing for corpus subsambles nor hyperparameter tune a model like reported in the paper. If you wish do any of this, activate venv first, then the following scripts. Note that you will have to adapt, model types, subsamples size, and topic numbers. 
+The above pipeline doesn't emperical fit time testing for corpus subsambles nor hyperparameter tune a model like reported in the paper. If you wish do any of this, activate venv first, then the following scripts. Note that you will have to adapt, model types, subsamples size, and topic numbers.
+
+The topic model evaluation metrics (coherence, diversity) used in `S3_hyperparamtuning.py` are from [turftopic](https://github.com/x-tabdeveloping/turftopic) and are therefore not distributed here. If you want to run the script you will need to place these functions in the placeholder script `turftopic_benchmarking.py`, refer to turftopic's benchmarking code. 
 
 ```bash
 # 1. Preprocess data
@@ -74,7 +76,7 @@ python src/model_and_topic_data_fitting.py
 python src/S3_hyperparamtuning.py
 
 # 4. Export topic data
-python src/extract_topic_csvs.py
+python src/topic_data_extraction.py
 
 # 5. Run case study
 python src/log_reg.py
@@ -86,9 +88,9 @@ To generate the figures for the paper do. Obv this will require the full data se
 cd paper/
 Rscript make_figures_for_paper.R
 ```
-populates
+This populates
 - `paper/figures/` - All figures for the paper
 
 ## Note on Benchmarking Code
 
-The topic model evaluation metrics (coherence, diversity) used in `S3_hyperparamtuning.py` are adapted from [turftopic](https://github.com/x-tabdeveloping/turftopic). If you need these functions, refer to turftopic's benchmarking code.
+
