@@ -1,6 +1,6 @@
 # Topic Modeling Mental Health Reddit Posts
 
-Topic modeling of ~2 million mental health-related Reddit posts using Semantic Signal Separation (S3). See https://www.dropbox.com/scl/fo/7pkofmtii9oflsi21dv0b/AHOwC3Q2lyBe2_hhvFqhhYI?rlkey=51u8ni3cxtowrp1v3chh7jh07&e=1&st=jrt3je13&dl=0
+Topic modeling of ~2 million mental health-related Reddit posts using Semantic Signal Separation (S3). See this [dropbox](https://www.dropbox.com/scl/fo/7pkofmtii9oflsi21dv0b/AHOwC3Q2lyBe2_hhvFqhhYI?rlkey=51u8ni3cxtowrp1v3chh7jh07&e=1&st=jrt3je13&dl=0) for the produced data and notebook on how to use it. 
 
 ## Project Structure
 
@@ -46,7 +46,7 @@ source .venv/bin/activate
 
 ### Full pipeline
 
-Place Reddit `.zst` dump files in `reddit_data/`, then change the topic number in `model_and_topic_data_fitting.py`.
+Place Reddit `.zst` dump files in `reddit_data/`, then change the topic number in `model_and_topic_data_fitting.py`. This will obviously require getting the full data. I suggest downloading indiviudal subreddits from the [pushshift dump](https://the-eye.eu/redarcs/) or using the CLI tool aria2 and (academic torrents)[https://academictorrents.com/]. 
 
 ```bash
 bash run_pipeline.sh

@@ -20,9 +20,9 @@ python src/zst_to_csv.py
 echo "Fitting topic model "
 python src/model_and_topic_data_fitting.py --downsample $DOWNSAMPLE
 
-# Step 3: extract csvs from topic data
-echo "Extracting topic data to csv"
-python src/extract_topic_csvs.py --td-path fitted_models/SemanticSignalSeparation_topic_data.joblib --out-dir topic_csvs
+# Step 3: extract topic data
+echo "Extracting topic data"
+python src/topic_data_extraction.py
 
 # Step 4: zip everything
 echo " Zipping results and meta_data"
