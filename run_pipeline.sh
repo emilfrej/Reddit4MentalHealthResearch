@@ -20,9 +20,9 @@ python src/zst_to_csv.py
 echo "Fitting topic model "
 python src/model_and_topic_data_fitting.py --downsample $DOWNSAMPLE
 
-# Step 3: extract topic data
-echo "Extracting topic data"
-python src/topic_data_extraction.py
+# Step 3: extract and compress topic data for sharing
+echo "Extracting and compressing topic data"
+python src/extract_topic_csvs.py
 
 # Step 4: zip everything
 echo " Zipping results and meta_data"
