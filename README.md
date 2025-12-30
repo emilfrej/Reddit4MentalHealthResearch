@@ -1,6 +1,6 @@
 # Topic Modeling Mental Health Reddit Posts
 
-Topic modeling of ~2 million mental health-related Reddit posts using Semantic Signal Separation (S3). See this [dropbox](https://www.dropbox.com/scl/fo/7pkofmtii9oflsi21dv0b/AHOwC3Q2lyBe2_hhvFqhhYI?rlkey=51u8ni3cxtowrp1v3chh7jh07&e=1&st=jrt3je13&dl=0) for the produced data and notebook on how to use it. 
+Topic modeling of ~2 million mental health-related Reddit posts using Semantic Signal Separation (S3) ([Kardos et al., 2025](https://doi.org/10.1162/coli_a_00545)). See this [dropbox](https://www.dropbox.com/scl/fo/7pkofmtii9oflsi21dv0b/AHOwC3Q2lyBe2_hhvFqhhYI?rlkey=51u8ni3cxtowrp1v3chh7jh07&e=1&st=jrt3je13&dl=0) for the produced data and notebook on how to use it. 
 
 ## Project Structure
 
