@@ -6,9 +6,9 @@ Topic modeling of ~2 million mental health-related Reddit posts using Semantic S
 
 ```
 .
-├── setup.sh                     # Creates venv and installs dependencies
-├── run_pipeline.sh              # Main pipeline script
-├── requirements.txt             # Python dependencies
+├── setup.sh  # creates venv and installs dependencies
+├── run_pipeline.sh   # main pipeline script
+├── requirements.txt   # dependencies to be used by setup.sh
 │
 ├── src/ #scripts for the pipeline
 │
@@ -25,23 +25,22 @@ Topic modeling of ~2 million mental health-related Reddit posts using Semantic S
 1. Clone the project:
 ```bash
 git clone https://github.com/emilfrej/Reddit4MentalHealthResearch.git
-cd Reddit4MentalHealthResearch
 ```
-
 2. Run the setup script:
 ```
+cd Reddit4MentalHealthResearch
 bash setup.sh
 ```
 3. Activate the virtual environment:
 ```
 source .venv/bin/activate
 ```
+This should make you ready to use the scripts.
 
 ## Running the Pipeline
 
 ### Full pipeline
-
-Place Reddit `.zst` dump files in `reddit_data/`, then change the topic number in `model_and_topic_data_fitting.py`. This will obviously require getting the full data. I suggest downloading indiviudal subreddits from the [pushshift dump](https://the-eye.eu/redarcs/) or using the CLI tool aria2 and (academic torrents)[https://academictorrents.com/]. 
+If you want to run the full pipeline, you will need at least one subreddit in `.zst` from the pushshift archive. Place Reddit `.zst` files in `reddit_data/`, then change the topic number in `model_and_topic_data_fitting.py` to desired number. Recreating similiar results to the paper would require downloading the entire corpus and running S3 model with n_topics = 300. This would take a bunch of time to setup and waiting for runs to finish even with GPU access and high-performance computers. To play around with the code,  I suggest downloading an single subreddits from the [pushshift dump](https://the-eye.eu/redarcs/) or using the CLI tool aria2 and (academic torrents)[https://academictorrents.com/] if you wish to download many.
 
 ```bash
 bash run_pipeline.sh
@@ -83,8 +82,6 @@ To generate the figures for the paper run the following. This will require the f
 cd paper/
 Rscript make_figures_for_paper.R
 ```
-This populates
-- `paper/figures/` - All figures for the paper
 
 
 
