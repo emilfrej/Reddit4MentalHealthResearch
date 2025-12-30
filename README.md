@@ -10,28 +10,23 @@ Topic modeling of ~2 million mental health-related Reddit posts using Semantic S
 ├── run_pipeline.sh              # Main pipeline script
 ├── requirements.txt             # Python dependencies
 │
-├── src/
-│   ├── zst_to_csv.py            # Decompress raw Reddit data to CSV
-│   ├── model_and_topic_data_fitting.py  # Fit topic models
-│   ├── S3_hyperparamtuning.py   # Hyperparameter tuning for S3
-│   ├── fit_time_testing.py      # Benchmark fitting times
-│   ├── extract_topic_csvs.py    # Export topic data to compressed format
-│   └── log_reg.py               # Logistic regression case study
+├── src/ #scripts for the pipeline
 │
-├── paper/                       # also a bunch of stuff for making plots.
-│   ├── report_pdf.Rmd           # Main report
-│   ├── make_figures_for_paper.R # redo plots for the paper in ggplot for aesthetics
-│   
+├── paper/  #contains report in .rmd, scripts, data for plotting, and made plots redo for the paper
 │
-├── reddit_data/                 # Place .zst files here
-├── fitted_models/               # Saved models
-├── evaluations/                 # Model evaluation results
-└── figures/                     # Generated figures from python files.
+├── reddit_data/  #for .zst subreddit dumps
+├── fitted_models/ #fitted models
+├── evaluations/   #model evals
+└── figures/  #non-paper ready figures
 ```
 
-## Installation 
+## Installation
 
-1. Clone project. Potentially to UCloud if you have access.
+1. Clone the project:
+```bash
+git clone https://github.com/emilfrej/Reddit4MentalHealthResearch.git
+cd Reddit4MentalHealthResearch
+```
 
 2. Run the setup script:
 ```
