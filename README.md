@@ -16,8 +16,7 @@ Topic modeling of ~1.9 million mental health-related Reddit posts using Semantic
 │   ├── S3_hyperparamtuning.py   # Hyperparameter tuning for S3
 │   ├── fit_time_testing.py      # Benchmark fitting times
 │   ├── extract_topic_csvs.py    # Export topic data to compressed format
-│   ├── log_reg.py               # Logistic regression case study
-│   └── turftopic_benchmarking.py  # Evaluation metrics
+│   └── log_reg.py               # Logistic regression case study
 │
 ├── paper/                       
 │   ├── report_pdf.Rmd           # Main report
@@ -89,3 +88,7 @@ Rscript make_figures_for_paper.R
 ```
 populates
 - `paper/figures/` - All figures for the paper
+
+## Note on Benchmarking Code
+
+The topic model evaluation metrics (coherence, diversity) used in `S3_hyperparamtuning.py` are adapted from [turftopic](https://github.com/x-tabdeveloping/turftopic). If you need these functions, refer to turftopic's benchmarking code.

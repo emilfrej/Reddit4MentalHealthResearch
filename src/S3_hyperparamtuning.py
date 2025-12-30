@@ -1,3 +1,6 @@
+# NOTE: evaluate_topic_quality and get_keywords functions are adapted from turftopic's
+# benchmarking code. See: https://github.com/x-tabdeveloping/turftopic
+# You will need to implement these yourself or copy from turftopic source.
 from turftopic_benchmarking import evaluate_topic_quality, get_keywords
 
 from glovpy import GloVe
