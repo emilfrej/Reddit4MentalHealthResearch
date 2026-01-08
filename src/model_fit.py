@@ -1,3 +1,7 @@
+"""
+Fit S3 model to corpus with configurable n_topics.
+Used for running on ucloud with GPU
+"""
 import time
 import pandas as pd
 import numpy as np
@@ -14,7 +18,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 import torch
 
 
-### You need to run the following to use spacy vectorizers. See turftopic documentation for info
 def get_corpus(downsample: int = 0):
     path = glob("*corpus*.csv")[0]
     df = pd.read_csv(path)
@@ -120,6 +123,7 @@ def fit_topic_models(
         #prep topic data
         topic_data = model.prepare_topic_data(corpus = corpus, embeddings = embeddings)
         
+        #sometimes fails on gpu, try anyway
         try:
             model.to_disk(model_dir)
         except Exception as e:

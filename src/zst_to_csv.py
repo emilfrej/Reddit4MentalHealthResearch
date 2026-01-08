@@ -1,3 +1,6 @@
+"""
+Decompress reddit .zst dumps to csv files for corpus and metadata
+"""
 import os
 import io
 import pandas as pd
@@ -86,6 +89,7 @@ def decompress_to_combined_csv():
     meta_data = all_df[['subreddit', 'author', 'created_utc', 'text_length']]
 
     #anonymize authors. NAs and "[deleted]" get send to -1
+    #converts to category codes so no usernames in output
     meta_data.loc[meta_data["author"] == "[deleted]", "author"] = pd.NA
     meta_data["author"] = (
         meta_data["author"]

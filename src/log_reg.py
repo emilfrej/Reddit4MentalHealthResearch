@@ -1,4 +1,6 @@
-#imports and helper functions
+"""
+Logistic regression case study: predicting if user will post in r/SuicideWatch
+"""
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
@@ -12,6 +14,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, roc_auc_score, average_precision_score, precision_recall_curve, confusion_matrix, roc_curve, roc_auc_score
 
 
+#helper class to load topic data from csvs instead of joblib
 class TopicDataFromCSV:
     """Simple container for topic data loaded from CSVs."""
     def __init__(self, document_topic_matrix, topic_term_matrix, vocab):
@@ -43,14 +46,14 @@ save_path = Path("paper/")
 # if they haven't posted in SW, the features are the mean doc topic values for all their posts
 def make_SW_data(meta_data, document_topic_matrix):
 
+    #binary indicator for SW posts
     SW_indicator = meta_data['subreddit'] == 'SuicideWatch'
 
-    #Get only rows that are SW
+    #get only rows that are SW
     SW_posts = meta_data[SW_indicator]
 
-    #Group by time and author. Get the earliest time for each. reset_index necesseary to keep as dataframe. returns series if not.
+    #for each author find when they first posted in SW
     first_SW_time = SW_posts.groupby('author')['created_utc'].min().reset_index()
-    #rename the column
     first_SW_time = first_SW_time.rename(columns={'created_utc': 'first_SW_utc'})
 
     #merge back to meta
@@ -122,19 +125,19 @@ def logistic_reg_pipeline(X,y):
 
 
 
-#def a function to get top k predictors by absolute value from a scikit-learn logistic regression
+#get top k most predictive topics by coef size
 def top_predictors(classifier, k, save_path):
 
-    #get coefs from pipeline
+    #extract logreg from sklearn pipeline
     logreg = classifier.named_steps["logreg"]
 
-    #iterate over each estiamte and store to df
+    #loop over coefs and store
     coefs = []
     for i, coef in enumerate(logreg.coef_.ravel()):
         coefs.append({"topic": i, "estimate": coef, "abs_estimate": np.abs(coef)})
     df = pd.DataFrame(coefs)
 
-    #sort by abs values and return top k slice of df
+    #sort by abs value so we get both positive and negative predictors
     df = df.sort_values("abs_estimate", ascending = False)
     
     #save the df as csv in figures

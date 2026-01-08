@@ -1,3 +1,6 @@
+"""
+Fit topic models using turftopic and save models + topic data
+"""
 import json
 import time
 import pandas as pd
@@ -54,7 +57,7 @@ def fit_topic_models(
     out_dir = Path(out_dir)
     out_dir.mkdir(exist_ok=True)
 
-    # make embeddings outside fitting loop
+    # make embeddings outside fitting loop so we dont redo for each model
     encoder = SentenceTransformer(encoder_name, device="cpu")
     embeddings = encoder.encode(corpus, show_progress_bar=True)
 
